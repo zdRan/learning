@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<artifactId>learning</artifactId>
-		<groupId>com.zdran</groupId>
-		<version>1.0</version>
-	</parent>
-	<groupId>com.zdran</groupId>
-	<artifactId>springboot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<name>springboot</name>
-	<description>Demo project for Spring Boot</description>
+    <parent>
+        <artifactId>learning</artifactId>
+        <groupId>com.zdran</groupId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>springboot</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <name>springBoot</name>
+    <description>Demo project for Spring Boot</description>
 
 </project>
