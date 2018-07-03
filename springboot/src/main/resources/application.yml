@@ -9,24 +9,23 @@ mybatis:
 
 spring:
   datasource:
-    learning:
-      url: jdbc:mysql://localhost:3306/LEARNING
-      username: root
-      password: rootzdr
-      driver-class-name: com.mysql.jdbc.Driver
-      initialSize: 5
-      minIdle: 5
-      maxActive: 10
-      maxWait: 10000
-      timeBetweenEvictionRunsMillis: 60000
-      minEvictableIdleTimeMillis: 300000
-      testOnBorrow: false
-      testOnReturn: false
-      testWhileIdle: true
-      keepAlive: true
-      removeAbandoned: true
-      removeAbandonedTimeout: 80
-      logAbandoned: true
-      poolPreparedStatements: true
-      maxPoolPreparedStatementPerConnectionSize: 20
-      filters: stat,slf4j,wall
+    url: jdbc:mysql://localhost:3306/LEARNING
+    username: root
+    password: rootzdr
+    driver-class-name: com.mysql.jdbc.Driver
+    initialSize: 5
+    minIdle: 5
+    maxActive: 10
+    maxWait: 10000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    testOnBorrow: false
+    testOnReturn: false
+    testWhileIdle: true
+    keepAlive: true
+    removeAbandoned: true
+    removeAbandonedTimeout: 80
+    logAbandoned: true
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,slf4j,wall
