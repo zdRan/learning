@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @author cm.zdran@gmail.com
  */
 @Configuration
-@ConfigurationProperties(prefix = "spring.datasource.learning")
+@ConfigurationProperties(prefix = "spring.datasource")
 public class DruidDataSourceProperties {
 
     private String driverClassName;
