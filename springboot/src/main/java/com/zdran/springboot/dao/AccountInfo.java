@@ -40,4 +40,19 @@ public class AccountInfo {
     public void setBalance(Integer balance) {
         this.balance = balance;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"accountId\":")
+                .append(accountId);
+        sb.append(",\"name\":\"")
+                .append(name).append('\"');
+        sb.append(",\"pwd\":\"")
+                .append(pwd).append('\"');
+        sb.append(",\"balance\":")
+                .append(balance);
+        sb.append('}');
+        return sb.toString();
+    }
 }
