@@ -40,11 +40,10 @@
             <artifactId>druid</artifactId>
             <version>1.1.1</version>
         </dependency>
-        <!-- 为了方便使用@ConfigurationProperties注解 -->
+        <!--添加模板引擎依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
     </dependencies>
 
