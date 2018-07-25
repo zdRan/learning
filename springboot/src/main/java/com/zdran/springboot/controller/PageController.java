@@ -17,4 +17,8 @@ public class PageController {
     public String getAccountByName() {
         return "helloSpring";
     }
+    @RequestMapping(value = "/parameterPassing", method = RequestMethod.GET)
+    public String getParameterPassing() {
+        return "parameterPassing";
+    }
 }
