@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>参数传递</title>
+
+    <script src="/learning/js/jquery.min.js"></script>
+</head>
+<body>
+    <h2>get传递基本类型1</h2>
+    <button id="bt1">get传递String</button>
+    <input id="in1" type="text">
+    <br/>
+    <h2>get传递基本类型2</h2>
+    <button id="bt2">get传递name</button>
+    <input id="in2" type="text">
+    <br/>
+    <h2>get传递基本类型3</h2>
+    <button id="bt3">get传递name</button>
+    <input id="in3" type="text">
+    <br/>
+    <h2>post传递基本类型4</h2>
+    <button id="bt4">get传递name</button>
+    <input id="in4" type="text">
+    <br/>
+    <h2>post传递基本类型5</h2>
+    <button id="bt5">get传递name</button>
+    <input id="in5" type="text">
+    <br/>
+    <h2>post传递基本类型6</h2>
+    <button id="bt6">get传递name</button>
+    <input id="in6" type="text">
+    <br/>
+    <h2>post传递引用类型7</h2>
+    <button id="bt7">get传递name</button>
+    <input id="in7" type="text">
+    <br/>
+    <h2>post传递数组8</h2>
+    <button id="bt8">get传递name</button>
+    <input id="in8" type="text">
+    <br/>
+    <h2>post传递数组9</h2>
+    <button id="bt9">get传递name</button>
+    <input id="in9" type="text">
+    <br/>
+</body>
+<script>
+    $("#bt1").click(
+        function () {
+            $.ajax(
+                {
+                    url: "/learning/parameter/getString/" + $("#in1").val(),
+                    method: "GET",
+                    success: function (result) {
+                        alert(result);
+                    }
+                }
+            )
+        }
+    );
+
+    $("#bt2").click(
+        function () {
+            $.ajax(
+                {
+                    url: "/learning/parameter/getName",
+                    method: "GET",
+                    data: {
+                        name: $("#in2").val()
+                    },
+                    success: function (result) {
+                        alert(result);
+                    }
+                }
+            );
+        }
+    );
+
+    //拼接url方式
+    $("#bt3").click(
+        function () {
+            $.ajax(
+                {
+                    url: "/learning/parameter/getName?name=" + $("#in3").val(),
+                    method: "GET",
+                    success: function (result) {
+                        alert(result);
+                    }
+                }
+            );
+        }
+    );
+
+    $("#bt4").click(
+        function () {
+            $.ajax(
+                {
+                    url: "/learning/parameter/postString/" + $("#in4").val(),
+                    method: "POST",
+                    success: function (result) {
+                        alert(result);
+                    }
+                }
+            )
+        }
+    );
+
+    $("#bt5").click(
+        function () {
+            $.ajax(
+                {
+                    url: "/learning/parameter/postName",
+                    method: "POST",
+                    data: {
+                        name: $("#in5").val()
+                    },
+                    success: function (result) {
+                        alert(result);
+                    }
+                }
+            );
+        }
+    );
+    //拼接url方式
+    $("#bt6").click(
+        function () {
+            $.ajax(
+                {
+                    url: "/learning/parameter/postName?name=" + $("#in6").val(),
+                    method: "POST",
+                    success: function (result) {
+                        alert(result);
+                    }
+                }
+            );
+        }
+    );
+
+    $("#bt7").click(
+        function () {
+            var accountInfo = {
+                accountId: 123,
+                name: $("#in7").val(),
+                pwd: "root",
+                balance: 123
+            };
+            $.ajax(
+                {
+                    url: "/learning/parameter/postAccount",
+                    method: "POST",
+                    data: JSON.stringify(accountInfo),
+                    contentType:"application/json",
+                    success: function (result) {
+                        alert(JSON.stringify(result));
+                    }
+                }
+            );
+        }
+    );
+
+    $("#bt8").click(
+        function () {
+            var names = ["a","b","c",$("#in8").val()];
+            $.ajax(
+                {
+                    url: "/learning/parameter/postNames",
+                    method: "POST",
+                    data: JSON.stringify(names),
+                    contentType:"application/json",
+                    success: function (result) {
+                        alert(JSON.stringify(result));
+                    }
+                }
+            );
+        }
+    );
+    $("#bt9").click(
+        function () {
+            var accounts = [];
+
+            var accountInfo1 = {
+                accountId: 123,
+                name: $("#in9").val(),
+                pwd: "root",
+                balance: 123
+            };
+            accounts.push(accountInfo1);
+            var accountInfo2 = {
+                accountId: 123,
+                name: $("#in9").val(),
+                pwd: "root",
+                balance: 123
+            };
+            accounts.push(accountInfo2);
+            $.ajax(
+                {
+                    url: "/learning/parameter/postAccountList",
+                    method: "POST",
+                    data: JSON.stringify(accounts),
+                    contentType:"application/json",
+                    success: function (result) {
+                        alert(JSON.stringify(result));
+                    }
+                }
+            );
+        }
+    );
+</script>
+</html>
