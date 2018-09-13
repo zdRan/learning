@@ -33,3 +33,16 @@ spring:
   thymeleaf:
     mode: LEGACYHTML5
     cache: false
+
+  redis:
+    cluster:
+      nodes: 127.0.0.1:9001,127.0.0.1:9002,127.0.0.1:9003
+    password:
+    timeout: 10000ms
+    database: 0
+    jedis:
+      pool:
+        max-idle: 8
+        min-idle: 1
+        max-active: 8
+        max-wait: 6000ms
