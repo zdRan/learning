@@ -13,4 +13,4 @@
 + [Spring Boot 学习笔记(八) 整合 Filter](https://zdran.com/20180809.html)
 + [Spring Boot 学习笔记(九) 整合 多环境配置](https://zdran.com/20180830.html)
 + [Spring Boot 学习笔记(十) Redis集群搭建](https://zdran.com/20180904.html)
-
++ [Spring Boot 学习笔记(十一) 整合 Redis](https://zdran.com/20180911.html)
