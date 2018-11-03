@@ -2,6 +2,8 @@
 
 本项目是个人学习时的一些笔记。不定期更新。
 
+**如有错误之处，还望指正**
+
 ## Spring Boot  
 
 + [Spring Boot 学习笔记 源码地址](https://github.com/zdRan/learning)
@@ -19,3 +21,6 @@
 + [Spring Boot 学习笔记(十二) 整合 定时任务](https://zdran.com/20181016.html)
 
 ## Dubbo
+
++ [Dubbo 学习笔记 源码地址](https://github.com/zdRan/learning)
++ [Dubbo 学习笔记(零) 自己实现一个 RPC 框架](https://zdran.com/20181102.html)
