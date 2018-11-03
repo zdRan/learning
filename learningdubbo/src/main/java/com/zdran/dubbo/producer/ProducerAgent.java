@@ -11,7 +11,7 @@ import java.net.Socket;
  * 接收 LocalAgent 发送过来的数据，通过反射调用对应的方法，并将结果序列化之后发送给 LocalAgent
  * Create by ranzd on 2018/11/2
  *
- * @author ranzd@chinaunicom.cn
+ * @author cm.zdran@gmail.com
  */
 public class ProducerAgent implements Runnable {
     Socket client = null;

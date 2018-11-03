@@ -14,7 +14,7 @@ import java.net.Socket;
  * 并通过 socket 接收 ProducerAgent 发送过来的数据，反序列化生成结果对象
  * Create by ranzd on 2018/11/2
  *
- * @author ranzd@chinaunicom.cn
+ * @author cm.zdran@gmail.com
  */
 public class LocalAgent<T> {
     public T importer(final Class<?> serviceClass, final InetSocketAddress addr) {

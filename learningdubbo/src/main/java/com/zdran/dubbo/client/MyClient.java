@@ -6,13 +6,11 @@ import com.zdran.dubbo.registration.RegistrationCenter;
 import com.zdran.dubbo.service.MyService;
 import com.zdran.dubbo.service.impl.MyServiceImpl;
 
-import java.net.InetSocketAddress;
-
 /**
  * 客户端：比如我们自己的项目。要使用 RPC 框架
  * Create by ranzd on 2018/11/2
  *
- * @author ranzd@chinaunicom.cn
+ * @author cm.zdran@gmail.com
  */
 public class MyClient {
     public static void main(String[] args) {
@@ -42,14 +40,13 @@ public class MyClient {
             }
         }).start();
         //向注册中心注册服务
-        center.setHost(host);
-        center.setPort(port);
+        center.register("MyService.sayHello", host, port);
     }
 
     private static void client(RegistrationCenter center) {
         LocalAgent<MyService> serviceLocalAgent = new LocalAgent<>();
         MyService myService = serviceLocalAgent.importer(MyServiceImpl.class,
-                new InetSocketAddress(center.getHost(), center.getPort()));
+                center.getService("MyService.sayHello"));
 
         System.out.println(myService.sayHello("RPC"));
     }

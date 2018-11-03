@@ -6,7 +6,7 @@ import com.zdran.dubbo.service.MyService;
  * 提供的服务
  * Create by ranzd on 2018/11/2
  *
- * @author ranzd@chinaunicom.cn
+ * @author cm.zdran@gmail.com
  */
 public class MyServiceImpl implements MyService {
     @Override

@@ -9,10 +9,11 @@ import java.util.concurrent.Executors;
  * 提供服务（建立连接，使客户端和服务端通信）
  * Create by ranzd on 2018/11/2
  *
- * @author ranzd@chinaunicom.cn
+ * @author cm.zdran@gmail.com
  */
 public class RpcProducer {
-    private static Executor executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private static Executor executor = Executors.newFixedThreadPool(
+            Runtime.getRuntime().availableProcessors());
 
     public static void produce(String host, int port) throws Exception {
         ServerSocket serverSocket = new ServerSocket();

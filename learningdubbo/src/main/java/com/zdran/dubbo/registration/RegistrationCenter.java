@@ -1,27 +1,23 @@
 package com.zdran.dubbo.registration;
 
+import java.net.InetSocketAddress;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Create by ranzd on 2018/11/2
  *
- * @author ranzd@chinaunicom.cn
+ * @author cm.zdran@gmail.com
  */
 public class RegistrationCenter {
-    private String host;
-    private int port;
 
-    public String getHost() {
-        return host;
+    private Map<String, InetSocketAddress> serviceMap = new HashMap<>();
+
+    public void register(String serviceName, String host, int port) {
+        serviceMap.put(serviceName, new InetSocketAddress(host, port));
     }
 
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
+    public InetSocketAddress getService(String serviceName) {
+        return serviceMap.get(serviceName);
     }
 }

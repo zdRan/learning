@@ -3,7 +3,7 @@ package com.zdran.dubbo.service;
 /**
  * Create by ranzd on 2018/11/2
  *
- * @author ranzd@chinaunicom.cn
+ * @author cm.zdran@gmail.com
  */
 public interface MyService {
     /**
