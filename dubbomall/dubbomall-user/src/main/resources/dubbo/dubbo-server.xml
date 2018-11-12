@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="dubbomall-user"/>
+
+    <!-- 这里使用的注册中心是zookeeper -->
+    <dubbo:registry address="zookeeper://39.105.78.88:2181" client="zkclient"/>
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20881"/>
+
+    <!-- 将该接口暴露到dubbo中 -->
+    <dubbo:service interface="com.zdran.dubbomall.user.service.UserService" ref="userServiceImpl"/>
+
+    <!-- 将具体的实现类加入到Spring容器中 -->
+    <bean id="userServiceImpl" class="com.zdran.dubbomall.user.service.impl.UserServiceImpl"/>
+
+</beans>
