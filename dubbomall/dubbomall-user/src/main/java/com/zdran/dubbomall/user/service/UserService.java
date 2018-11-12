@@ -6,5 +6,11 @@ package com.zdran.dubbomall.user.service;
  * @author cm.zdran@gmail.com
  */
 public interface UserService {
+    /**
+     * 返回 hello 字符串
+     *
+     * @param name 姓名
+     * @return
+     */
     String sayHello(String name);
 }
