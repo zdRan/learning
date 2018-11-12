@@ -28,15 +28,12 @@ public class MyClient {
         String host = "localhost";
         int port = 8878;
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    System.out.println("服务端启动........");
-                    RpcProducer.produce(host, port);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        new Thread(() -> {
+            try {
+                System.out.println("服务端启动........");
+                RpcProducer.produce(host, port);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }).start();
         //向注册中心注册服务
