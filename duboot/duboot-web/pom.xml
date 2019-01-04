@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.zdran.duboot</groupId>
-    <artifactId>web</artifactId>
+    <artifactId>duboot-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>web</name>
     <description>Demo project for Spring Boot</description>
@@ -21,7 +21,7 @@
     <dependencies>
         <dependency>
             <groupId>com.zdran.duboot</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>duboot-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
