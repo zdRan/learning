@@ -23,7 +23,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @SpringBootApplication
 @EnableSwagger2
-@ComponentScan({"com.zdran.springboot"})
 @EnableScheduling
 public class SpringbootApplication {
 
