@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(TextDemo());
 class TextDemo extends StatelessWidget{
   
   @override
@@ -45,7 +44,7 @@ class TextDemo extends StatelessWidget{
               height: 1.5,
               letterSpacing: 11,
               //shadows: shadowsList,
-              wordSpacing: 122
+              wordSpacing: 22
               ),
               ),
               
