@@ -25,9 +25,9 @@ class ContainerDemo extends StatelessWidget {
     );
     var sweep = SweepGradient(
       colors: gradColorList,
-      startAngle:0.1,
-      //endAngle:1,
-      center: Alignment.topRight
+      //startAngle:,
+      endAngle:7,
+      center: Alignment.center
     );
 
     var decoraion = BoxDecoration(
@@ -57,7 +57,7 @@ class ContainerDemo extends StatelessWidget {
               decoration: decoraion,
               //在子节点上方绘制,子节点不动,可能会被覆盖
               //foregroundDecoration :decoraion,
-              //padding: edgeInset,
+              padding: edgeInset,
               //margin: edgeInset,
               alignment: Alignment.bottomCenter,
             ),
