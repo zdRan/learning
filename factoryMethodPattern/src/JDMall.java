@@ -23,11 +23,11 @@ public class JDMall implements Mall {
         String result = HttpClientUtil.getMethod("jd/url/submitOrder", new HashMap<>());
         return this.getOrderByResult(result);
     }
-
+    //格式化返回值，适配本地模型
     private Goods getGoodsByResult(String result) {
         return new Goods();
     }
-
+    //格式化返回值，适配本地模型
     private Order getOrderByResult(String result) {
         return new Order();
     }
