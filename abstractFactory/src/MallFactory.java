@@ -1,30 +1,18 @@
-import model.Goods;
-import model.Order;
-
-import java.util.List;
-
 /**
- * 工厂类
- * Create by ranzd on 2019/2/20
+ * 工厂类，产生具体的产品
+ * Create by ranzd on 2019/2/21
  *
  * @author cm.zdran@gmail.com
  */
-public interface MallFactory {
-    /**
-     * 工厂方法：获取商品信息
-     *
-     * @param sku 商品 id
-     * @return 商品信息
-     */
-    Goods getGoodsInfo(String sku);
+public class MallFactory {
 
-    /**
-     * 工厂方法：下单接口
-     *
-     * @param goods 商品集合
-     * @return 订单
-     */
-    Order submitOrder(List<Goods> goods);
-
-
+    public static Mall getMall(String name) {
+        if ("JD".equals(name)) {
+            return new JDMall();
+        }
+        if ("TM".equals(name)) {
+            return new TBMall();
+        }
+        return null;
+    }
 }
