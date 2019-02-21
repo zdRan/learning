@@ -4,7 +4,7 @@ import model.Order;
 import java.util.List;
 
 /**
- * 工厂类
+ * 抽象产品类
  * Create by ranzd on 2019/2/20
  *
  * @author cm.zdran@gmail.com

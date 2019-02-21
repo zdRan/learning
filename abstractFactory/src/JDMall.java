@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * 具体的工厂类，封装京东API
+ * 具体的产品类，封装京东API
  * Create by ranzd on 2019/2/21
  *
  * @author cm.zdran@gmail.com
