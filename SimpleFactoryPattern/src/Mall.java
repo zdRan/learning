@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface Mall {
     /**
-     * 工厂方法：获取商品信息
+     * 获取商品信息
      *
      * @param sku 商品 id
      * @return 商品信息
@@ -19,7 +19,7 @@ public interface Mall {
     Goods getGoodsInfo(String sku);
 
     /**
-     * 工厂方法：下单接口
+     * 下单接口
      *
      * @param goods 商品集合
      * @return 订单
