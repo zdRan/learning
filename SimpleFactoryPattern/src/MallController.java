@@ -27,4 +27,5 @@ public class MallController {
         return mall.submitOrder(goods);
     }
 
+    //其他接口
 }

@@ -4,6 +4,7 @@ import util.HttpClientUtil;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 具体的产品类，封装京东API
@@ -14,13 +15,19 @@ import java.util.List;
 public class JDMall implements Mall {
     @Override
     public Goods getGoodsInfo(String sku) {
-        String result = HttpClientUtil.getMethod("jd/url/getGoodsInfo", new HashMap<>());
+        //获取对应供应商需要的参数
+        Map<String, String> extend = new HashMap<>();
+
+        String result = HttpClientUtil.getMethod("jd/url/getGoodsInfo", extend);
         return this.getGoodsByResult(result);
     }
 
     @Override
     public Order submitOrder(List<Goods> goods) {
-        String result = HttpClientUtil.getMethod("jd/url/submitOrder", new HashMap<>());
+        //获取对应供应商需要的参数
+        Map<String, String> extend = new HashMap<>();
+
+        String result = HttpClientUtil.getMethod("jd/url/submitOrder", extend);
         return this.getOrderByResult(result);
     }
     //格式化返回值，适配本地模型

@@ -26,5 +26,6 @@ public interface Mall {
      */
     Order submitOrder(List<Goods> goods);
 
+    //其他接口 ... ...
 
 }
