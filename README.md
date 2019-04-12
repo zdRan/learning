@@ -31,4 +31,5 @@
 + [Flutter 学习笔记 源码地址](https://github.com/zdRan/learning)
 + [Windows 下 搭建 Flutter 环境](https://zdran.com/20180625.html)
 + [Flutter 学习笔记(一) Text 组件](https://zdran.com/20190214.html)
++ [Flutter 学习笔记(二) Container 组件](https://zdran.com/20190215.html)
 
