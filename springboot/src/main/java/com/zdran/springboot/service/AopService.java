@@ -1,5 +1,7 @@
 package com.zdran.springboot.service;
 
+import com.zdran.springboot.dao.AccountInfo;
+
 /**
  * Create by ranzd on 2019/4/16
  *
@@ -7,5 +9,5 @@ package com.zdran.springboot.service;
  */
 public interface AopService {
 
-    String aopHello(String name);
+    String aopHello(AccountInfo accountInfo);
 }

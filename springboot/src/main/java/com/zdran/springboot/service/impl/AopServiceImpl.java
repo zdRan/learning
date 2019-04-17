@@ -1,5 +1,6 @@
 package com.zdran.springboot.service.impl;
 
+import com.zdran.springboot.dao.AccountInfo;
 import com.zdran.springboot.service.AopService;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class AopServiceImpl implements AopService {
     @Override
-    public String aopHello(String name) {
-        return "hello," + name;
+    public String aopHello(AccountInfo accountInfo) {
+
+        return "hello," + accountInfo.getName();
     }
 }
