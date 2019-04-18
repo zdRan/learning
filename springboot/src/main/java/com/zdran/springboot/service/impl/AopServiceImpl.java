@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class AopServiceImpl implements AopService {
     @Override
-    public String aopHello(AccountInfo accountInfo) {
-
-        return "hello," + accountInfo.getName();
+    public AccountInfo aopHello(AccountInfo accountInfo) {
+        accountInfo.setPwd("123");
+        return accountInfo;
     }
 }

@@ -9,5 +9,5 @@ import com.zdran.springboot.dao.AccountInfo;
  */
 public interface AopService {
 
-    String aopHello(AccountInfo accountInfo);
+    AccountInfo aopHello(AccountInfo accountInfo);
 }
