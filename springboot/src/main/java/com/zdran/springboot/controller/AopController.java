@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Create by ranzd on 2019/4/17
  *
- * @author ranzd@chinaunicom.cn
+ * @author cm.zdran@gmail.com
  */
 @RestController
 public class AopController {
@@ -22,13 +22,13 @@ public class AopController {
     private AopService aopService;
 
     @GetMapping("/helloAop/{name}")
-    public String helloAop(@PathVariable("name") String name) {
+    public AccountInfo helloAop(@PathVariable("name") String name) {
         logger.info("AOP 接口入参：{}", name);
         AccountInfo accountInfo = new AccountInfo();
         accountInfo.setName(name);
 
-        String str = aopService.aopHello(accountInfo);
-        logger.info("AOP 接口出参：{}", str);
-        return str;
+        accountInfo = aopService.aopHello(accountInfo);
+        logger.info("AOP 接口出参：{}", accountInfo);
+        return accountInfo;
     }
 }
