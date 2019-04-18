@@ -2,10 +2,8 @@ package com.zdran.springboot.aop;
 
 import com.zdran.springboot.dao.AccountInfo;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -27,20 +25,86 @@ public class AopAspect {
     public void pointCut() {
     }
 
+    /**
+     * 在方法执行之前执行
+     *
+     * @param joinPoint
+     */
     @Before(value = "pointCut()")
     public void doBefore(JoinPoint joinPoint) {
-        logger.info("before run");
+        logger.info("doBefore run");
         AccountInfo accountInfo = (AccountInfo) joinPoint.getArgs()[0];
         logger.info("AOP:{}", accountInfo.toString());
         accountInfo.setName("aop");
-
     }
 
+    /**
+     * 在方法执行之后执行
+     *
+     * @param joinPoint
+     */
     @After(value = "pointCut()")
     public void doAfter(JoinPoint joinPoint) {
-        logger.info("after run");
-        logger.info(joinPoint.getTarget().toString());
+        logger.info("doAfter run");
+    }
 
-        System.out.println(joinPoint.getTarget());
+    /**
+     * 在 after 注解方法之后执行，可以对方法返回值进行修改
+     *
+     * @param point
+     * @param returnValue
+     */
+    @AfterReturning(value = "pointCut()", returning = "returnValue")
+    public void doAfterReturning(JoinPoint point, AccountInfo returnValue) {
+        logger.info("doAfterReturning:{}", returnValue);
+        returnValue.setName("doAfterReturning");
+    }
+
+    /**
+     * 在方法抛出异常时执行,执行顺序在 After 之后
+     *
+     * @param ex
+     */
+    @AfterThrowing(value = "pointCut()", throwing = "ex")
+    public void doAfterThrowing(Throwable ex) {
+        logger.info("doAfterThrowing run");
+        logger.error("doAfterThrowing:", ex);
+    }
+
+    /**
+     * 环绕通知
+     *
+     * @param joinPoint
+     */
+    @Around(value = "pointCut()")
+    public AccountInfo doAround(ProceedingJoinPoint joinPoint) {
+        logger.info("doAround run");
+        AccountInfo accountInfo = (AccountInfo) joinPoint.getArgs()[0];
+        //在方法被执行前，修改参数
+        accountInfo.setBalance(123);
+        try {
+            //执行的实际方法
+            joinPoint.proceed();
+        } catch (Throwable throwable) {
+            return null;
+        }
+        //在方法执行后修改返回值
+        accountInfo.setName("around");
+        return accountInfo;
+    }
+
+    public void test() {
+        //@Around
+        try {
+            try {
+                //@Before
+                //method.invoke(..);
+            } finally {
+                //@After
+            }
+            //@AfterReturning
+        } catch (Exception e) {
+            //@AfterThrowing
+        }
     }
 }
