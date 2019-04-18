@@ -19,6 +19,7 @@
 + [Spring Boot 学习笔记(十) Redis集群搭建](https://zdran.com/20180904.html)
 + [Spring Boot 学习笔记(十一) 整合 Redis](https://zdran.com/20180911.html)
 + [Spring Boot 学习笔记(十二) 整合 定时任务](https://zdran.com/20181016.html)
++ [Spring Boot 学习笔记(十三) 整合 AOP](https://zdran.com/20190418.html)
 
 ## Dubbo
 
