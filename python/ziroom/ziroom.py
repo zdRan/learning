@@ -4,10 +4,56 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from PIL import Image
-import price_img_ocr
+import numpy as np
+import pickle
 import io
 import os
 import xlwt
+
+'''
+使用已知的图片解析出每个数字对应的数组，用于后期图片的解析参考
+'''
+def analyze_img():
+    response = requests.get('http://static8.ziroom.com/phoenix/pc/images/price/9bbd4bf71c11e7c8149485d9f1ec5adbs.png')
+    im = Image.open(io.BytesIO(response.content))
+    im = im.convert('1')
+    im.show()
+    num = [0,1,4,8,9,3,6,2,7,5]
+    num_dict = {}
+    for i in range(10):
+        data = im.crop((i*30,0,(i+1)*30,30)).getdata()
+        data = np.matrix(data,dtype='int')/255
+        num_dict[num[i]] =data
+
+    fp = open('num_dict.num', 'wb')
+    pickle.dump(num_dict, fp, protocol=-1)
+    fp.close()
+    return num_dict
+
+'''
+获取指定url的图片，并解析出图片中的数字
+'''
+def img_ocr(img_url):
+    response = requests.get(img_url)
+    im = Image.open(io.BytesIO(response.content))
+    im = im.convert('1')
+
+    fp = open('num_dict.num', 'rb')
+    num_dict = pickle.load(fp)
+    result = []
+    for i in range(10):
+        data = im.crop((i*30,0,(i+1)*30,30)).getdata()
+        data = np.matrix(data,dtype='int')/255
+        flag = False
+        for item in num_dict:
+            if (num_dict[item] == data).all():
+                flag = True
+                result.append(item)
+        # 数字 8 的图片有两种情况
+        if not flag:
+            result.append(8)
+    return result
+
 
 '''
 获取价格信息
@@ -19,17 +65,18 @@ def get_room_price(room_id,house_id):
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
         "Pragma": "no-cache"
     }
-    price_img_url = "http://www.ziroom.com/detail/info?id={}&house_id=()".format(room_id,house_id)
+    price_img_url = "http://www.ziroom.com/detail/info?id={}&house_id={}".format(room_id,house_id)
     resp = requests.get(price_img_url,headers = room_price_header)
     price = json.loads(resp.text)['data']['price']
     price_pos = price[2]
-    num_list = price_img_ocr.img_ocr('http:'+price[0])
+    num_list = img_ocr('http:'+price[0])
     result = ""
     for i in price_pos:
         result += str(num_list[i])
     return result
 
 def get_room_info(room_url):
+    print("正在请求：{}".format(room_url))
     room_req_header = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
         "Host": "www.ziroom.com",
@@ -65,6 +112,7 @@ def get_room_info(room_url):
     return room_info
 
 def get_page(page_url):
+    print("正在请求：{}".format(page_url))
     room_req_header = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
         "Host": "www.ziroom.com",
@@ -90,6 +138,7 @@ def write_excel(sheet,data,row):
 
 
 if __name__ == '__main__':
+    # 在自如网页面上选择好筛选条件，替换掉这个 url 即可
     url = 'http://www.ziroom.com/z/nl/z1-r0TO5000-s1%E5%8F%B7%E7%BA%BF-t%E8%8B%B9%E6%9E%9C%E5%9B%AD.html'
     room_req_header = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
@@ -106,7 +155,7 @@ if __name__ == '__main__':
     ziroom = workbook.add_sheet('ziroom')
     row = 0
     for page_num in range(page_total):
-        data = get_page(url+'?p='+str(1))
+        data = get_page(url+'?p='+str(page_num))
         write_excel(ziroom,data,row)
         row += len(data)
 
