@@ -18,12 +18,13 @@ class ContainerDemo extends StatelessWidget {
         colors: gradColorList,
         begin: Alignment.bottomRight
     );
-
+    // 放射渐变
     var radial = RadialGradient(
       colors: gradColorList,
       radius: 2,
 
     );
+    //扫描渐变
     var sweep = SweepGradient(
         colors: gradColorList,
         //startAngle:,
