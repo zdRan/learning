@@ -13,7 +13,7 @@ class ContainerDemo extends StatelessWidget {
     gradColorList.add(Colors.orange);
     gradColorList.add(Colors.white);
     gradColorList.add(Colors.white);
-
+    //线性渐变
     var linear = LinearGradient(
         colors: gradColorList,
         begin: Alignment.bottomRight
