@@ -30,18 +30,29 @@
 
 ## 二、Python 爬虫库
 
-+ urllib
-+ BeautifulSoup
-+ Requests
+### urllib
+
+### BeautifulSoup
 + 正则表达式
-+ json
-+ Scrapy
-+ 文件存储-txt
-+ 文件存储-excel
-+ 文件存储-PDF
-+ 数据存储-MySQL 数据库
+
+### Requests
+### Scrapy
+### 文件存储
++ JSON格式
++ txt
++ excel
++ PDF
+
+### 数据存储 
++ MySQL
 
 ## 三、Python 爬虫实战
-
++ 爬取豆瓣电影
++ 爬取电影天堂的海报
++ 提取电影天堂的下载地址
++ 将下载地址存储到数据库
++ 爬起BOSS直聘网的招聘信
++ 使用结巴分词分析数据并生成词云图
++ 模拟登陆
 ## 四、Python 爬虫高级用法
 
