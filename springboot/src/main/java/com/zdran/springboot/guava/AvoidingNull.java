@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
+ * 使用和避免 null
  * Create by ranzhendong on 2019-09-09
  *
  * @author ranzhendong@maoyan.com
