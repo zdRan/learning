@@ -20,6 +20,7 @@
 + [Spring Boot 学习笔记(十一) 整合 Redis](https://zdran.com/20180911.html)
 + [Spring Boot 学习笔记(十二) 整合 定时任务](https://zdran.com/20181016.html)
 + [Spring Boot 学习笔记(十三) 整合 AOP](https://zdran.com/20190418.html)
++ [Spring Boot 学习笔记(十四) 整合 Guava](https://zdran.com/20190909.html)
 
 ## Dubbo
 
