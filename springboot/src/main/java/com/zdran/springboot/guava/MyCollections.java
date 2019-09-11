@@ -7,10 +7,7 @@ import com.google.common.primitives.Ints;
 import com.zdran.springboot.dao.AccountInfo;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Create by ranzhendong on 2019-09-09
@@ -152,7 +149,30 @@ public class MyCollections {
         diff.entriesOnlyOnLeft(); // {"a" => 1}
         diff.entriesOnlyOnRight(); // {"d" => 5}MapDifference
     }
+    private static void testForwarding(){
+        ForwardingList<String> forwardingList = new ForwardingList<String>() {
+            final List<String> delegate = new ArrayList<>(); // backing list
+            @Override
+            protected List<String> delegate() {
+                return delegate;
+            }
 
+            @Override
+            public void add(int index, String element) {
+                System.out.println("add:" + element);
+                super.add(index, element);
+            }
+
+            @Override
+            public String get(int index) {
+                System.out.println("get:" + index);
+                return super.get(index);
+            }
+        };
+
+        forwardingList.add(0,"aaa");
+        System.out.println(forwardingList.get(0));
+    }
     public static void main(String[] args) {
 //        testImmutable();
 //        testSort();
@@ -161,6 +181,8 @@ public class MyCollections {
 //        testMultimap();
 //        testBiMap();
 //        testSets();
-        testMaps();
+//        testMaps();
+        testForwarding();
     }
+
 }
