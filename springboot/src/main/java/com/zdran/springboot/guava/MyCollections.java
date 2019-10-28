@@ -1,6 +1,7 @@
 package com.zdran.springboot.guava;
 
 import com.google.common.base.Function;
+import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.collect.*;
 import com.google.common.primitives.Ints;
@@ -149,9 +150,11 @@ public class MyCollections {
         diff.entriesOnlyOnLeft(); // {"a" => 1}
         diff.entriesOnlyOnRight(); // {"d" => 5}MapDifference
     }
-    private static void testForwarding(){
+
+    private static void testForwarding() {
         ForwardingList<String> forwardingList = new ForwardingList<String>() {
             final List<String> delegate = new ArrayList<>(); // backing list
+
             @Override
             protected List<String> delegate() {
                 return delegate;
@@ -170,9 +173,10 @@ public class MyCollections {
             }
         };
 
-        forwardingList.add(0,"aaa");
+        forwardingList.add(0, "aaa");
         System.out.println(forwardingList.get(0));
     }
+
     public static void main(String[] args) {
 //        testImmutable();
 //        testSort();
@@ -182,7 +186,22 @@ public class MyCollections {
 //        testBiMap();
 //        testSets();
 //        testMaps();
-        testForwarding();
+//        testForwarding();
+        test();
     }
 
+    private static void test() {
+        Map<String, Object> result = new HashMap<>();
+
+        List<Integer> integers = new ArrayList<>();
+
+        integers.add(8);
+        integers.add(23);
+        integers.add(85);
+
+        result.put("attrIds", integers);
+
+        System.out.println(Joiner.on(",").join((Collection) (result.get("attrIds"))));
+
+    }
 }
